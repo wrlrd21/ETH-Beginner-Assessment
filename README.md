@@ -1,26 +1,73 @@
-MyToken is a basic Solidity contract representing a custom token with functionalities to mint and burn tokens.
+# Project Title
 
-Requirements
-Token Details: The contract stores public variables for the token name, token abbreviation, and total supply.
-Balances Mapping: Utilizes a mapping of addresses to token balances.
-Mint Function: Provides a function to mint new tokens, increasing the total supply and the balance of the specified address.
-Burn Function: Implements a function to burn tokens, reducing the total supply and the balance of the specified address.
-Burn Conditionals: Ensures the burn function only proceeds if the sender's balance is sufficient.
-Usage
-Deploy: Deploy the contract to your preferred Ethereum network.
-Interact: Use the provided functions to mint or burn tokens as needed.
-Verify Balances: Verify token balances using the balances mapping.
-Monitor Total Supply: Keep track of the total token supply through the totalSupply variable.
-Deployment
-Compile the Solidity contract.
-Deploy the compiled contract to your chosen Ethereum network.
-Verify contract functionality through interaction with the deployed instance.
-Example:-
-// Deployed contract instance
-MyToken myToken = MyToken();
+A simple smart contract for creating and managing a token named "MARK" with the abbreviation "Zuckerberg".
 
-// Mint tokens
-myToken.mint(address, amount);
+## Description
 
-// Burn tokens
-myToken.burn(address, amount);
+The `MyToken` contract allows users to mint new tokens, burn existing tokens, and keep track of token balances associated with different addresses. The contract demonstrates basic token management on the Ethereum blockchain.
+
+## Getting Started
+
+### Executing program
+
+Follow these steps to set up and deploy the contract using Remix IDE:
+
+1. **Open Remix IDE:**
+   Go to [Remix IDE](https://remix.ethereum.org).
+
+2. **Create a New File:**
+   - In the left sidebar, click on the "+" icon to create a new file.
+   - Name your file `MyToken.sol`.
+
+3. **Paste the Solidity Code:**
+   ```solidity
+   // SPDX-License-Identifier: MIT
+   pragma solidity 0.8.18;
+
+   contract MyToken {
+
+       // public variables here
+       string public TOken_Name = "Newton";
+       string public Token_Abbrv = "N";
+       uint public Total_Supply = 0;
+       
+       // mapping variable here
+       mapping(address => uint) public Balanace;
+
+       // mint function
+       function mint (address _Addre, uint _val) public {
+           Total_Supply += _val;
+           Balanace[_Addre] += _val;
+       }
+
+       // burn function
+       function burn (address _Addre, uint _val) public {
+           if(Total_Supply >= _val) {
+               Total_Supply -= _val;
+               Balanace[_Addre] -= _val;
+           }
+       }
+   }
+
+## Function Usage
+### mint
+The mint function allows you to create new tokens and add them to a specified address.
+
+### burn
+The burn function allows you to destroy tokens from a specified address, reducing the total supply.
+
+### Parameters:
+
+_Addre: The address to which the newly minted tokens will be added.
+_val: The amount of tokens to mint.
+
+## Help
+
+For common issues or problems, you can refer to the Remix IDE documentation or check the console for error messages.
+
+## Authors
+
+Contributors names and contact info:
+
+Nitin Kumar Rai
+(nkrr647560@gmail.com)
